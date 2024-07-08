@@ -14,12 +14,12 @@ import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 
 import FooterLinkItem from './FooterLinkItem';
 import IntTxsIndexingStatus from './IntTxsIndexingStatus';
-import getApiVersionUrl from './utils/getApiVersionUrl';
+// import getApiVersionUrl from './utils/getApiVersionUrl';
 
 const MAX_LINKS_COLUMNS = 4;
 
-const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
-const FRONT_COMMIT_URL = `https://github.com/blockscout/frontend/commit/${ config.UI.footer.frontendCommit }`;
+// const FRONT_VERSION_URL = `https://github.com/blockscout/frontend/tree/${ config.UI.footer.frontendVersion }`;
+// const FRONT_COMMIT_URL = `https://github.com/blockscout/frontend/commit/${ config.UI.footer.frontendCommit }`;
 
 const Footer = () => {
 
@@ -28,7 +28,7 @@ const Footer = () => {
       staleTime: Infinity,
     },
   });
-  const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
+  // const apiVersionUrl = getApiVersionUrl(backendVersionData?.backend_version);
   const issueUrl = useIssueUrl(backendVersionData?.backend_version);
   const BLOCKSCOUT_LINKS = [
     {
@@ -75,17 +75,17 @@ const Footer = () => {
     },
   ];
 
-  const frontendLink = (() => {
-    if (config.UI.footer.frontendVersion) {
-      return <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>;
-    }
+  // const frontendLink = (() => {
+  //   if (config.UI.footer.frontendVersion) {
+  //     return <Link href={ FRONT_VERSION_URL } target="_blank">{ config.UI.footer.frontendVersion }</Link>;
+  //   }
 
-    if (config.UI.footer.frontendCommit) {
-      return <Link href={ FRONT_COMMIT_URL } target="_blank">{ config.UI.footer.frontendCommit }</Link>;
-    }
+  //   if (config.UI.footer.frontendCommit) {
+  //     return <Link href={ FRONT_COMMIT_URL } target="_blank">{ config.UI.footer.frontendCommit }</Link>;
+  //   }
 
-    return null;
-  })();
+  //   return null;
+  // })();
 
   const fetch = useFetch();
 
@@ -118,11 +118,11 @@ const Footer = () => {
   const renderProjectInfo = React.useCallback((gridArea?: GridProps['gridArea']) => {
     return (
       <Box gridArea={ gridArea }>
-        <Link fontSize="xs" href="https://www.blockscout.com">blockscout.com</Link>
+        <Link fontSize="xs" href="https://orangechain.xyz">orangechain.xyz</Link>
         <Text mt={ 3 } fontSize="xs">
-          Blockscout is a tool for inspecting and analyzing EVM based blockchains. Blockchain explorer for Ethereum Networks.
+        The Proof-of-Work Bitcoin Layer-2 Network
         </Text>
-        <VStack spacing={ 1 } mt={ 6 } alignItems="start">
+        {/* <VStack spacing={ 1 } mt={ 6 } alignItems="start">
           { apiVersionUrl && (
             <Text fontSize="xs">
               Backend: <Link href={ apiVersionUrl } target="_blank">{ backendVersionData?.backend_version }</Link>
@@ -133,10 +133,11 @@ const Footer = () => {
               Frontend: { frontendLink }
             </Text>
           ) }
-        </VStack>
+        </VStack> */}
       </Box>
     );
-  }, [ apiVersionUrl, backendVersionData?.backend_version, frontendLink ]);
+    // apiVersionUrl,frontendLink
+  }, [backendVersionData?.backend_version ]);
 
   const containerProps: GridProps = {
     as: 'footer',
